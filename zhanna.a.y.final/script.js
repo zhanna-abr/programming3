@@ -1,6 +1,6 @@
 var matrix = [];
 
-var side = 25;
+var side = 40;
 let bombCounter = 0;
 
 let grassArr = []
