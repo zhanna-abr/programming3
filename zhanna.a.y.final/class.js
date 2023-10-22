@@ -1,5 +1,6 @@
 
 let LivingCreature = require('./LivingCreature')
+let random = require("./random");
 
 
 

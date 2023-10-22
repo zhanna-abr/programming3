@@ -23,11 +23,11 @@ server.listen(3000, function () {
 
 
 
- matrix = [];
+matrix = [];
 grassArr = []
- grassEatArr = []
- predatorArr = []
- hunterArr = []
+grassEatArr = []
+predatorArr = []
+hunterArr = []
 
 let Bomb = require('./bomb')
 let Grass = require('./class')
@@ -36,8 +36,8 @@ let Hunter = require('./hunter')
 let Predator = require('./predator')
 let random = require("./random");
 
-
- 
+var side = 40
+var bombCounter = 0
 
 
 function setupGame() {
@@ -45,7 +45,7 @@ function setupGame() {
       matrix[i] = [];
       for (let g = 0; g < side; g++) {
 
-         matrix[i][g] = Math.round(random(0, 4))
+         matrix[i][g] = Math.round(random(4))
       }
    }
 
@@ -75,10 +75,18 @@ function setupGame() {
    }
 
 }
+
 let xAxis = -1;
 let yAxis = -1;
 
 function playGame() {
+
+   // let xAxis = -1;
+   // let yAxis = -1;
+
+   // if (xAxis != -1 && yAxis != -1) {
+   //    matrix[yAxis][xAxis] == 5;
+   // }
    bombCounter++;
    for (let i in grassArr) {
       grassArr[i].mul()
@@ -92,21 +100,20 @@ function playGame() {
    for (let i in hunterArr) {
       hunterArr[i].eat()
    }
-   
+
    if (bombCounter == 2) {
-      xAxis = Math.floor(random(0, matrix[0].length));
-      yAxis = Math.floor(random(0, matrix.length));
-      console.log(xAxis)
-      console.log(yAxis)
+      xAxis = Math.floor(random(matrix[0].length));
+      yAxis = Math.floor(random(matrix.length));
 
       matrix[yAxis][xAxis] = 5;
       fill("black");
+      color = "black"
       rect(xAxis * side, yAxis * side, side, side);
       let newBomb = new Bomb(xAxis, yAxis);
       newBomb.explode();
       bombCounter = 0;
       matrix[yAxis][xAxis] = 0;
-  }
+   }
    io.emit('update matrix', matrix)
 }
 

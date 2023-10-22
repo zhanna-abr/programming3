@@ -1,5 +1,5 @@
 let LivingCreature = require('./LivingCreature')
-
+let random = require("./random");
 
 module.exports = class Predator extends LivingCreature {
 

@@ -1,5 +1,7 @@
 
 let LivingCreature = require('./LivingCreature')
+let random = require("./random");
+
 
 
     module.exports = class Bomb extends LivingCreature {
@@ -34,7 +36,6 @@ let LivingCreature = require('./LivingCreature')
 
     explode() {
         let newCell = this.chooseCell(1);
-        console.log(newCell)
         if (newCell) {
             for (var y = 0; y < 8; y++) {
                 for (var x = 0; x < 8; x++) {

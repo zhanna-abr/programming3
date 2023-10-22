@@ -1,5 +1,5 @@
 var side = 40;
-let bombCounter = 0;
+ bombCounter = 0;
 const sideX = 30;
 const sideY = 30;
 const socket = io()
@@ -10,14 +10,17 @@ function setup() {
 
 }
 
-// let xAxis = -1;
-// let yAxis = -1;
+// let xAxis 
+// let yAxis 
+socket.on('update matrix', drawful )
 
 function drawful (matrix) {
+    
+   
     // bombCounter++;
-    if (xAxis != -1 && yAxis != -1) {
-        matrix[yAxis][xAxis] == 5;
-    }
+    // if (xAxis != -1 && yAxis != -1) {
+    //     matrix[yAxis][xAxis] == 5;
+    // }
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -36,9 +39,13 @@ function drawful (matrix) {
             else if (matrix[y][x] == 5) {
                 fill("black");
             }
+            else if  (matrix[y][x] == 6){
+                fill("white");
+            }
             else {
                 fill("#acacac");
             }
+
 
             rect(x * side, y * side, side, side);
 
@@ -67,6 +74,6 @@ function drawful (matrix) {
 
 }
 
-socket.on('update matrix', drawful )
+
 
 
